@@ -25,29 +25,6 @@ node {
           
 }
 
-//parallel integration testing
-stage 'Browser Testing'
-parallel chrome: {
-    runTests("Chrome")
-}, firefox: {
-    runTests("Firefox")
-}, safari: {
-    runTests("Safari")
-}
-
-def runTests(browser) {
-    node {
-        sh 'rm -rf *'
-
-        unstash 'everything'
-
-        sh "npm run test-single-run -- --browsers ${browser}"
-
-        step([$class: 'JUnitResultArchiver', 
-              testResults: 'test-results/**/test-results.xml'])
-    }
-}
-
 
 // limit concurrency so we don't perform simultaneous deploys
 // and if multiple pipelines are executing, 
