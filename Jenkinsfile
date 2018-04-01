@@ -14,7 +14,7 @@ node {
 		  includes: '**'
 	    
 	    // test with PhantomJS for "fast" "generic" results
-	    sh 'npm ru test-single-run -- --browsers PhantomJS'
+	    sh 'npm run test-single-run -- --browsers PhantomJS'
 	    
 	    // archive karma test results (karma is configured to export junit xml files)
 	    step([$class: 'JUnitResultArchiver', 
