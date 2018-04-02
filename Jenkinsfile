@@ -21,7 +21,7 @@ node {
 		  testResults: 'test-results/**/test-results.xml'])
 
 	    // archive the app folder
-	    // archiveArtifacts 'app/'
+	    archiveArtifacts 'app/'
     } catch (err) {
      notify("Failed building or testing.  ${err}")
     } 
